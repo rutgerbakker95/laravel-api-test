@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Rutger Bakker',
             'email' => 'rutger@robuust.digital',
         ]);
+
+        $this->call(BlogPostsSeeder::class);
     }
 }
