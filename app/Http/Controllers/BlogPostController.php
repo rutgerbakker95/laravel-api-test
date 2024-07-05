@@ -12,8 +12,8 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        $books = BlogPost::all();
+        $blogPosts = BlogPost::with('user')->paginate(10);
 
-        return response()->json($books);
+        return response()->json($blogPosts);
     }
 }
