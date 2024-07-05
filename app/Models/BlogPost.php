@@ -25,7 +25,7 @@ class BlogPost extends Model
     protected $fillable = [
         'title',
         'body',
-        'user_id', // Replace 'author' with 'user_id'
+        'user_id',
     ];
 
     /**
