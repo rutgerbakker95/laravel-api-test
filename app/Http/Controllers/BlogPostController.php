@@ -39,8 +39,8 @@ class BlogPostController extends Controller
         ->get();
 
         return response()->json([
-            'posts' => $blogPosts,
-            'countsPerMonth' => $countsPerMonth
+            'blog_posts' => $blogPosts,
+            'counts_per_month' => $countsPerMonth
         ]);
     }
 
