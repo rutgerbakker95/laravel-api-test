@@ -4,19 +4,19 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\BlogPosts;
+use App\Models\BlogPost;
 
-class BlogPostsSeeder extends Seeder
+class BlogPostSeeder extends Seeder
 {
     /**
-     * Run the BlogPosts database seeds.
+     * Run the BlogPost database seeds.
      */
     public function run(): void
     {
         $faker = \Faker\Factory::create();
 
         for ($i = 0; $i < 50; $i++) {
-            BlogPosts::create([
+            BlogPost::create([
                 'title' => $faker->sentence,
                 'body' => $faker->paragraph,
                 'author' => $faker->name,

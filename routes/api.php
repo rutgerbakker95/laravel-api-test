@@ -1,6 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogPostsController;
+use App\Http\Controllers\BlogPostController;
 
-Route::get('/posts', [BlogPostsController::class, 'index']);
+Route::get('/posts', [BlogPostController::class, 'index']);

@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'rutger@robuust.digital',
         ]);
 
-        $this->call(BlogPostsSeeder::class);
+        $this->call(BlogPostSeeder::class);
     }
 }

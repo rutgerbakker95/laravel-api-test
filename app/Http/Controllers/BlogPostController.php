@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\BlogPosts;
+use App\Models\BlogPost;
 
-class BlogPostsController extends Controller
+class BlogPostController extends Controller
 {
     /**
      * Display a listing of all blog posts.
      */
     public function index()
     {
-        $books = BlogPosts::all();
+        $books = BlogPost::all();
 
         return response()->json($books);
     }
