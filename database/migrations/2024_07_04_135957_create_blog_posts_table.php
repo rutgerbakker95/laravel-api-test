@@ -14,8 +14,9 @@ return new class () extends Migration {
             $table->id();
             $table->string('title');
             $table->text('body')->nullable();
-            $table->string('author');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -24,6 +25,11 @@ return new class () extends Migration {
      */
     public function down(): void
     {
+        Schema::table('blog_posts', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
+        });
+
         Schema::dropIfExists('blog_posts');
     }
 };
