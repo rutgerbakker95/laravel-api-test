@@ -28,4 +28,18 @@ class BlogPostController extends Controller
 
         return response()->json($blogPosts);
     }
+
+    /**
+     * Display the specified blog post
+     */
+    public function show($id)
+    {
+        $blogPost = BlogPost::with('user')->find($id);
+
+        if ($blogPost) {
+            return response()->json($blogPost);
+        } else {
+            return response()->json(['message' => 'Blogpost not found'], 404);
+        }
+    }
 }
