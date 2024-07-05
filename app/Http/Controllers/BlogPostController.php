@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\BlogPost;
 
 class BlogPostController extends Controller
@@ -26,7 +27,21 @@ class BlogPostController extends Controller
 
         $blogPosts = $query->paginate(10);
 
-        return response()->json($blogPosts);
+        $countsPerMonth = BlogPost::select(
+            DB::raw("EXTRACT(YEAR FROM created_at) as year"),
+            DB::raw("EXTRACT(MONTH FROM created_at) as month"),
+            DB::raw('COUNT(*) as count')
+        )
+        ->where('created_at', '>=', now()->subMonths(12))
+        ->groupBy('year', 'month')
+        ->orderBy('year', 'desc')
+        ->orderBy('month', 'desc')
+        ->get();
+
+        return response()->json([
+            'posts' => $blogPosts,
+            'countsPerMonth' => $countsPerMonth
+        ]);
     }
 
     /**
